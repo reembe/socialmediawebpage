@@ -1,38 +1,53 @@
-const usernames = ['adakittyxoxo', 'tincanoftuna', 'etaclee'];
-const profilePictures = [
-  'ada.png', // adakittyxoxo
-  'tina.jpg', // tincanoftuna
-  'cate.png'  // ecatelee
-];
+const usersContainer = document.getElementById('users');
+const postsContainer = document.getElementById('posts');
+const todosContainer = document.getElementById('todos');
 
+const usernames = ['adakittyxoxo', 'tincanoftuna', 'etaclee'];
+const profilePictures = ['ada.png', 'tina.jpg', 'cate.png'];
 const userIds = [1, 2, 3];
 
 userIds.forEach((userId, index) => {
   fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`Failed to fetch data for user ${userId}. Status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(data => {
-      const address = data.address;
-
-      const addressHTML = `
-        <div class="user-address">
-          <img src="${profilePictures[index]}" alt="${usernames[index]}'s profile picture" class="profile-pic">
+    .then(response => response.json())
+    .then(user => {
+      const userCard = `
+        <div class="user-card">
+          <img src="${profilePictures[index]}" alt="${usernames[index]}'s profile picture">
           <h2>${usernames[index]}</h2>
-          <p><strong>Street:</strong> ${address.street}</p>
-          <p><strong>Suite:</strong> ${address.suite}</p>
-          <p><strong>City:</strong> ${address.city}</p>
-          <p><strong>Zipcode:</strong> ${address.zipcode}</p>
-          <p><strong>Latitude:</strong> ${address.geo.lat}</p>
-          <p><strong>Longitude:</strong> ${address.geo.lng}</p>
-          <hr>
+          <p><strong>Name:</strong> ${user.name}</p>
+          <p><strong>Email:</strong> ${user.email}</p>
+          <p><strong>City:</strong> ${user.address.city}</p>
         </div>
       `;
+      usersContainer.innerHTML += userCard;
+    });
 
-      document.getElementById('text').innerHTML += addressHTML;
-    })
-    .catch(error => console.error('Error:', error));
+  fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
+    .then(response => response.json())
+    .then(posts => {
+      posts.forEach(post => {
+        const postCard = `
+          <div class="post-card">
+            <h3>${post.title}</h3>
+            <p>${post.body}</p>
+            <p><strong>Posted by:</strong> ${usernames[index]}</p>
+          </div>
+        `;
+        postsContainer.innerHTML += postCard;
+      });
+    });
+
+  fetch(`https://jsonplaceholder.typicode.com/todos?userId=${userId}`)
+    .then(response => response.json())
+    .then(todos => {
+      todos.forEach(todo => {
+        const todoCard = `
+          <div class="todo-card">
+            <h3>${todo.title}</h3>
+            <p><strong>Status:</strong> ${todo.completed ? 'Completed' : 'Incomplete'}</p>
+          </div>
+        `;
+        todosContainer.innerHTML += todoCard;
+      });
+    });
 });
