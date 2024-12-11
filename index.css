@@ -46,6 +46,22 @@ h2 {
   gap: 20px;
 }
 
+#top-users {
+  position: relative;
+}
+
+.image-container {
+  position: absolute;
+  top: 0;
+  right: 20px;
+}
+
+.image-container img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 .user-card, .post-card, .todo-card {
   background-color: #fff;
   border-radius: 8px;
