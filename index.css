@@ -1,114 +1,74 @@
-
- header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #ffab76;
-    color: #fff;
-  }
-  
-  header h1 {
-    margin: 0;
-    font-size: 1.8rem;
-    color: #2c3e50;
-  }
-  
-  header #logo img {
-    width: 50px;
-    height: auto;
-  }
-  
-  main {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-  }
-  
-  #text {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .user-address {
-    background-color: #ffecdb;
-    border: 1px solid #ffa07a;
-    border-radius: 8px;
-    padding: 20px;
-    max-width: 300px;
-    flex: 1;
-    box-sizing: border-box;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: left;
-  }
-  
-  p {
-    font-size: 16px;
-    color: #2c3e50;
-  }
-  
-  hr {
-    border: 1px solid #ff8c42;
-  }
-  
-  .user-address {
-    display: inline-block;
-    width: 30%;
-    background-color: rgb(243, 234, 235);
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-    text-align: center;
-  }
-  
-  .profile-pic {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-  }
-  
-  h2 {
-    color: rgb(168, 118, 126);
-    margin-bottom: 10px;
-  }
-  
-
 body {
   font-family: 'Raleway', sans-serif;
-  background-image: url('background.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background-color: #afb8c7;
+  color: #333;
   margin: 0;
   padding: 0;
-  position: relative;
-  overflow: hidden;
 }
 
-body:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('background.jpg');
-  background-size: cover;
-  background-position: center;
-  filter: blur(10px);
-  z-index: -1;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #7c96bf;
+  color: #fff;
 }
 
-.user-card {
-  font-family: 'Raleway', sans-serif;
-  background-color: rgba(255, 255, 255, 0.8);
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #2c3e50;
+}
+
+header #logo img {
+  width: 50px;
+  height: auto;
+}
+
+main {
   padding: 20px;
-  margin: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+section {
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #020203;
+  margin-bottom: 20px;
+}
+
+#users, #posts, #todos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.user-card, .post-card, .todo-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 300px;
+  text-align: center;
+}
+
+.user-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+p {
+  margin: 10px 0;
+  font-size: 14px;
+  color: #2c3e50;
+}
+
+.post-card h3, .todo-card h3 {
+  font-size: 1.2rem;
+  color: #333;
+}
